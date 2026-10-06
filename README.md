@@ -56,9 +56,11 @@ cat ~/.ssh/id_pi1.pub | ssh a16404ys@10.195.13.23 'mkdir -p ~/.ssh && chmod 700 
 ssh -i ~/.ssh/id_pi1 -o IdentiftiesOnly=yes a16404ys@10.195.12.23
 ```
 
+- the 10.196.13.23 is dynamic. 
+
 ![remote_share](./image/remote_share.png)
 
-## Test the sync by command line
+## Test the sync from the command line
 
 ```bash
 rsync -e 'ssh -i /home/yuansun/.ssh/id_pi1 -o IdentitiesOnly=yes -o BatchMode=yes' \
