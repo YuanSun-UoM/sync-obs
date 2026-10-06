@@ -53,7 +53,7 @@ cat ~/.ssh/id_pi1.pub | ssh a16404ys@10.195.13.23 'mkdir -p ~/.ssh && chmod 700 
 # it will ask password to login Macbook
 
 # then test 
-ssh -i ~/.ssh/id_pi1 -o IdentiftiesOnly=yes a16404ys@10.195.12.23
+ssh -i ~/.ssh/id_pi1 -o IdentitiesOnly=yes a16404ys@10.195.12.23
 ```
 
 - the 10.196.13.23 is dynamic. 
