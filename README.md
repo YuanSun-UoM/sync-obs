@@ -115,3 +115,7 @@ and/or
 journalctl -u sync_obs.service
 ```
 
+Stopping running service
+```
+sudo systemctl stop sync_obs.service
+```
