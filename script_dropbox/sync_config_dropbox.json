@@ -1,0 +1,10 @@
+{
+  "source": "/home/yuansun/FTP/CL31/",
+  "destination": "dropbox:ceilometer_data/pi1_nus",
+  "_archive_dir": "/mnt/smurobs_ssd/archive/",
+  "delete_empty_dirs": true,
+  "archive_older_than_mins": 5,
+  "archive_max_fill_fraction": 0.9,
+  "sync_repeat_time_mins": 5,
+  "rsync_opts": ""
+}
