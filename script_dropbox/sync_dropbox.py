@@ -59,12 +59,10 @@ class Config:
         zipfile_name = date.today().strftime("%Y%j") + ".zip"
         zipfile_path = os.path.join(self.archive_dir, zipfile_name)
         if self.do_archive:
-            z = ZipFile(zipfile_path, "a", ZIP_DEFLATED,
-                        compresslevel=compress_level_int)
-            z.write(filename)
-            z.close()
-            os.remove(filename)
-
+            with ZipFile(zipfile_path, "a", ZIP_DEFLATED, compresslevel=compress_level_int) as z:
+                z.write(filename,arcname=os.path.basename(filename))
+            os.remove(filename)?
+            
     def app_cleanup(self):
         archive_usage = disk_usage(self.archive_dir)
         while (archive_usage.used / archive_usage.total) > \
