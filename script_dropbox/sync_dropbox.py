@@ -61,7 +61,7 @@ class Config:
         if self.do_archive:
             with ZipFile(zipfile_path, "a", ZIP_DEFLATED, compresslevel=compress_level_int) as z:
                 z.write(filename,arcname=os.path.basename(filename))
-            os.remove(filename)?
+            os.remove(filename)
             
     def app_cleanup(self):
         archive_usage = disk_usage(self.archive_dir)

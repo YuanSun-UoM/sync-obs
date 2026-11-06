@@ -3,24 +3,24 @@ Due to NUS internet firewall, cloud storage is an alternative approach.
 
 ## Install Dropbox on Raspberry Pi
 - Install `rclone`
-  ```
+  ```bash
   sudo apt update
   sudo apt install rclone
   ```
   
 - Configuration
-  ```
+  ```bash
   rclone config
   ```
   Follow the interactive prompts:
   
-  1. Select n to create a new remote.
-  2. Enter dropbox as the remote name.
+  1. Select `n` to create a new remote.
+  2. Enter `dropbox` as the remote name.
   3. Select Dropbox as the storage type.
   4. Follow the browser authentication instructions to authorize your Dropbox account.
   5. Save the configuration.
 
-In case of:
+  In case of:
 
 ```
 Option client_id.
@@ -34,7 +34,7 @@ and
 ```
 client_secret>
 ```
-press Enter. 
+press Enter to leave empty. 
 
 In case of:
 ```
@@ -45,7 +45,37 @@ y/n> n
 ```
 select No.
 
+In case of:
+
+```
+Use auto config?
+Say Y if not sure
+Say N if you are working on a remote or headless machine
+```
+
+Select Yes
+
+
+
+In case of:
+
+```
+Keep this "dropbox" remote?
+y) Yes this is OK (default)
+e) Edit this remote
+d) Delete this remote
+```
+
+Select Yes
+
+
+
+- Finally, quit configuration
+
+
+
 ## Test `rclone`
+
 - Check
   ```bash
   which rclone
@@ -83,15 +113,21 @@ To test the Python script:
 ```bash
 python3 sync_dropbox.py \
   --config_file sync_config_dropbox.json \
-  --once
 ```
 To validate JSON:
 ```bash
 python3 -m json.tool sync_config_dropbox.json
 ```
 
+
+
 ## Run the service `sync_obs_dropbox`
+
 - Install the service
+  
+  - check the `WorkingDirectory` in the `install_service.sh
+  
+  
   ```bash
   chmod +x install_service.sh
   ./install_service.sh
@@ -99,11 +135,11 @@ python3 -m json.tool sync_config_dropbox.json
   
 - Check whether the old service is currently runing (optional):
   ```bash
-  sudo systemctl status sync_obs.service
+  sudo systemctl status sync_obs.service # sync_obs is the old service
   ```
   and/or
   ```bash
-  sudo systemctl status sync_obs_dropbox.service
+  sudo systemctl status sync_obs_dropbox.service # sync_obs_dropbox is the service for dropbox
   ```
 - Stop old service:
   ```bash
@@ -133,3 +169,12 @@ python3 -m json.tool sync_config_dropbox.json
   ```bash
   sudo systemctl status sync_obs_dropbox.service
   ```
+
+- Restart the service
+
+  ```
+  sudo systemctl daemon-reload
+  sudo systemctl restart sync_obs_dropbox.service
+  ```
+
+  
