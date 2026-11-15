@@ -45,6 +45,8 @@ y/n> n
 ```
 select No.
 
+
+
 In case of:
 
 ```
@@ -68,9 +70,7 @@ d) Delete this remote
 
 Select Yes
 
-
-
-- Finally, quit configuration
+- Finally, quit configuration `q`
 
 
 
@@ -107,8 +107,7 @@ Select Yes
   - This retains near-real-time synchronization, but requires additional temporary storage and careful snapshot cleanup. 
 - `sync_config_dropbox.json`
 - `install_service.sh`
-
-To test the Python script:
+- To test the Python script:
 
 ```bash
 python3 sync_dropbox.py \
@@ -141,7 +140,7 @@ python3 -m json.tool sync_config_dropbox.json
   ```bash
   sudo systemctl status sync_obs_dropbox.service # sync_obs_dropbox is the service for dropbox
   ```
-- Stop old service:
+- Stop old service (named `sync_obs`):
   ```bash
   sudo systemctl stop sync_obs.service
   ```
